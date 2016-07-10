@@ -1,3 +1,42 @@
 body{
-	background: #26B1FC;
+	background: white;
 }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+span{
+	font-weight: bold;
+}
+
+.header{
+	background-color: #0075F4;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+/*#fieldBuilder{
+	border: 1px solid;
+	background-color: #0075F4;
+	border-radius: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+*/
+
+textarea {
+  resize: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 10px;
+}
+
+/*textarea {position: absolute; height: 100px; width: 300px; top: 50%; left: 50%;}
+#test1 {background: rgba(0,0,0,0); color: red;}
+#test2 {background: rgba(0,0,0,0); color: #000;}*/

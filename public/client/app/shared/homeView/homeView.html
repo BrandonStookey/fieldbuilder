@@ -1,1 +1,89 @@
 <h1> Hey I am homeView! </h1>
+
+<!-- https://docs.angularjs.org/api/ng/directive/ngMaxlength -->
+
+<form name="myForm">
+	
+	Label: <input type="text" name="input" ng-model="label" required>
+
+<br>
+
+	Type: Multi Select Text  <input type="checkbox" checked="checked"> A value is required 
+
+<br>
+
+	Default: <input type="text" name="input" ng-model="default" required>
+
+	
+<br>
+
+<div>
+    <textarea type="text" rows="10" cols="30" ng-model="choice" maxlines = "5" maxlines-prevent-enter="true" required>
+    	{{ choice }}
+    </textarea>
+</div>
+
+<br>
+
+	<div>
+	  <label id= 'text'> Order: </label>
+	    <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
+	      <option value="options1"> Display choices in alphabetical order </option>
+	    </select>
+	</div>
+<br>
+
+</form>
+
+<!-- <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, textBox, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> -->
+
+<button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit">Search</button>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div> -->
+  <!-- <form name="form"> -->
+    <!-- <label for="maxlength">Set a maxlength: </label> -->
+    <!-- <input type="number" ng-model="maxlength" id="maxlength" /> -->
+<!--     <br>
+    <label for="input">This input is restricted by the current maxlength: </label>
+    <input type="text" ng-model="model" id="input" name="input" ng-maxlength="maxlength" /><br>
+    <hr>
+    input valid? = <code>{{form.input.$valid}}</code><br>
+    model = <code>{{model}}</code>
+  </form>
+</div> -->
+
+
+
+<!-- <form name="myForm">
+ <div contenteditable
+      name="myWidget" ng-model="userContent" ng-style="{color: color}"
+      strip-br="true"
+      maxlines = "5" maxlines-prevent-enter="true"
+      required>Change me!</div>
+  <span ng-show="myForm.myWidget.$error.required">Required!</span>
+ <hr>
+ <textarea ng-model="userContent.length" aria-label="Dynamic textarea"></textarea>
+</form>
+ <section ng-if="Number.length > 10">It's {{userContent.length}}</section> -->
+
+<!-- <br>
+<hr> -->
+<!-- <textarea id="test1" type = "text" maxlines = "5" maxlines-prevent-enter="true"></textarea>
+<textarea id="test2" type = "text" maxlines = "5" maxlines-prevent-enter="true"></textarea> -->
+
+
+
+
+
+

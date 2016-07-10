@@ -28,6 +28,7 @@
     "mocha": "^2.5.3",
     "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
-    "phantomjs-prebuilt": "^2.1.7"
+    "phantomjs-prebuilt": "^2.1.7",
+    "request": "^2.73.0"
   }
 }
