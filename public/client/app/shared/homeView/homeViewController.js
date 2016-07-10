@@ -50,18 +50,19 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
 	}
 
 	$scope.userContent = '';
-  $scope.$watch('userContent', function(newValue){ 
+  $scope.$watch('choice', function(newValue){ 
 
-  	 var num = newValue.length; 
+  	 var resultArray = newValue.split('\n'); 
   	 console.log('newValue length: ', newValue.length);
-     console.log('newValue: ', newValue[num]);
+     console.log('newValue: ', newValue.split('\n'));
 
      if(newValue.length > 12){
-     	for(var i = 0; i < 60; i++){
-     		
-   		$scope.userContent +=	'<span ng-bind-html="userContent" ng-style="{color: red}">' + newValue[i] + '</span>';
-	     	console.log('<span ng-bind-html="userContent" ng-style="{color: red}">' + newValue[i] + '</span>');
-			}
+   //   	for(var i = 0; i < resultArray.length; i++){
+   //   		if(resultArray[i].length > 4){
+   //        // $scope.choice.splice()
+  	//      	console.log('<span ng-bind-html="userContent" ng-style="{color: red}">' + resultArray[i].split('').splice(4) + '</span>');
+   //        $scope.choice +=  '<span ng-bind-html="userContent" ng-style="{color: red}">' + newValue[i] + '</span>';
+   //      }
 
      		// $scope.color = 'red';
        	console.log('Empty');

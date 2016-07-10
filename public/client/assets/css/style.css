@@ -12,24 +12,33 @@ h1{
   }
 }
 
+.multiSelect{
+	font-weight: bold;
+}
+
 .choices{
 	vertical-align: top;
 }
 
 .cancel{
 	outline: none;
-	background-color: white;
+	background-color: #0075F4;
 	border: none;
 	color: red;
 }
 
-input{
+#searchSubmit{
+	margin-left: 100px;
+}
+
+.mainInput{
 	margin-top: 10px;
 	margin-bottom:10px;
+	width: 250px;
 }
 
 label{
-	margin-right: 30px;
+	width: 100px;
 }
 .header{
 	background-color: #0075F4;
