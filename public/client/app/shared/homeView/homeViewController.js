@@ -30,6 +30,11 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
 	
 	});
 
+  $scope.clearFields = function(){
+    $scope.label = '';
+    $scope.default = '';
+    $scope.choice = '';
+  }
 
 	$scope.formInfo = function(label, default1, choices, order){
 		if(order === 'options1'){
