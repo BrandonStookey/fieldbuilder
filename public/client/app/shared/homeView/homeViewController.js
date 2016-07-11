@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
+angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize'])
 
 .controller('homeViewController', ['$scope', 'projectFactory', function($scope, projectFactory){
 	console.log('I am homeViewController!!!');
@@ -13,7 +13,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
 	$scope.choices;
 	$scope.choice = '';
 	$scope.count = 0;
-
+   
 	console.log($scope.fieldServiceResult);
 
 	projectFactory.getFieldService().then(function(result){
@@ -52,7 +52,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
 	$scope.userContent = '';
   $scope.$watch('choice', function(newValue){ 
 
-  	 var resultArray = newValue.split('\n'); 
+  	 // var resultArray = newValue.split('\n'); 
   	 console.log('newValue length: ', newValue.length);
      console.log('newValue: ', newValue.split('\n'));
 
@@ -63,6 +63,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate'])
   	//      	console.log('<span ng-bind-html="userContent" ng-style="{color: red}">' + resultArray[i].split('').splice(4) + '</span>');
    //        $scope.choice +=  '<span ng-bind-html="userContent" ng-style="{color: red}">' + newValue[i] + '</span>';
    //      }
+			// }
 
      		// $scope.color = 'red';
        	console.log('Empty');

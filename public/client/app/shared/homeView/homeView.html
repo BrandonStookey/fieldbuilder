@@ -4,12 +4,10 @@
     <div class = "col-sm-8 col-sm-offset-2">
       <div class = "fieldBuilder">
 
-
         <div class = "row">
           <div class = "col-sm-offset-2">
         <form name="myForm">
         	
-
         	<label>Label:</label> <input class = "mainInput" type="text" name="input" ng-model="label" required> 
 
         <br>
@@ -25,10 +23,9 @@
 
         <div>
             <label class ="choices"> Choices: </label>
-
-            <textarea type="text" rows="10" cols="30" ng-model="choice" maxlines = "5" maxlines-prevent-enter="true" required>
-            	{{ choice }}
+            <textarea type="text" rows="10" cols="30" ng-bind-html = "choice" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" required>
             </textarea>
+
         </div>
 
         <br>
@@ -41,26 +38,19 @@
         	</div>
         <br>
 
+        <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
         </form>
+
 
         <!-- <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, textBox, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> -->
 
-        <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit">Search</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
         </div>
         </div>
-
 
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 <!-- <div> -->
