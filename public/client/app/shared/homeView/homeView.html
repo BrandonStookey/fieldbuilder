@@ -3,50 +3,46 @@
   <div class = "row">
     <div class = "col-sm-8 col-sm-offset-2">
       <div class = "fieldBuilder">
-
         <div class = "row">
           <div class = "col-sm-offset-2">
-        <form name="myForm">
-        	
-        	<label>Label:</label> <input class = "mainInput" type="text" name="input" ng-model="label" required> 
 
-        <br>
+            <form name="myForm">
+            	
+            	<label>Label:</label> <input class = "mainInput" type="text" name="input" ng-model="label" required> 
 
-        	<label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
+            <br>
 
-        <br>
+            	<label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
 
-        	<label>Default:</label> <input class ="mainInput" type="text" name="input" ng-model="default" required>
+            <br>
 
-        	
-        <br>
+            	<label>Default:</label> <input class ="mainInput" type="text" name="input" ng-model="default" required>
 
-        <div>
-            <label class ="choices"> Choices: </label>
-            <textarea type="text" rows="10" cols="30" ng-bind-html = "choice" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" required>
-            </textarea>
+            	
+            <br>
 
+            <div>
+                <label class ="choices"> Choices: </label>
+                <textarea type="text" rows="10" cols="30" ng-bind-html = "choice" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" required>
+                </textarea>
+
+            </div>
+
+            <br>
+
+            	<div>
+            	  <label> Order: </label>
+            	    <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
+            	      <option value="options1"> Display choices in alphabetical order </option>
+            	    </select>
+            	</div>
+            <br>
+
+            <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
+            </form>
+
+          </div>
         </div>
-
-        <br>
-
-        	<div>
-        	  <label> Order: </label>
-        	    <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
-        	      <option value="options1"> Display choices in alphabetical order </option>
-        	    </select>
-        	</div>
-        <br>
-
-        <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
-        </form>
-
-
-        <!-- <button type="button" id = 'searchSubmit' class="btn btn-primary btn-lg active" ng-click ="formInfo(label, default, textBox, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Search</button> -->
-
-        </div>
-        </div>
-
       </div>
     </div>
   </div>

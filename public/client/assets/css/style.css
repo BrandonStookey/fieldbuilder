@@ -72,6 +72,17 @@ textarea {
   padding: 10px;
 }
 
+/*loading bar spinner*/
+#loading-bar-spinner .spinner-icon{
+  width: 34px;
+  height: 34px;
+}
+
+#loading-bar-spinner {
+  top: 50%;
+  left: 50%;
+}
+
 
 /*textarea {position: absolute; height: 100px; width: 300px; top: 50%; left: 50%;}
 #test1 {background: rgba(0,0,0,0); color: red;}

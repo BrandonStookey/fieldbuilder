@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize'])
+angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','angular-loading-bar'])
 
 .controller('homeViewController', ['$scope', 'projectFactory', function($scope, projectFactory){
 	console.log('I am homeViewController!!!');
@@ -41,7 +41,9 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize'])
 			choices = choices.split('\n').sort();
 		}
 
-		projectFactory.createForm(label, default1, choices, order);
+		projectFactory.createForm(label, default1, choices, order).then(function(result){
+      console.log('createForm: ', result);
+    });
 
 		console.log('label: ', label);
 		console.log('default: ', default1);
@@ -52,7 +54,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize'])
 	$scope.userContent = '';
   $scope.$watch('choice', function(newValue){ 
 
-  	 // var resultArray = newValue.split('\n'); 
+  	 var resultArray = newValue.split('\n'); 
   	 console.log('newValue length: ', newValue.length);
      console.log('newValue: ', newValue.split('\n'));
 
