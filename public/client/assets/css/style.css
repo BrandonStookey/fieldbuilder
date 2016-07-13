@@ -12,6 +12,15 @@ h1{
 	padding-left: 25px;
 }
 
+select{
+	margin-top: 230px;
+}
+
+.order{
+	/*position: absolute;*/
+	margin-top: 230px;
+}
+
 .multiSelect{
 	font-weight: bold;
 	margin-right: 10px;
@@ -64,12 +73,30 @@ label{
 	padding-right: 80px;
 }
 
+/*Textarea and div*/
 
-textarea {
-  resize: none;
-  border-radius: 15px;
-  outline: none;
-  padding: 10px;
+textarea{
+	outline: none;
+	border: none;
+	resize: none;
+	position: absolute;
+	background: transparent;
+	color: transparent;
+	margin-left: 16%;
+	width: 250px;
+	height: 250px;
+}
+
+#textareaDiv{
+	border: 1px solid;
+	border-radius: 10px;
+	background: white;
+	position: absolute;
+	margin-left: 16%;
+	width: 250px;
+	height: 250px;
+	overflow: scroll;
+	overflow: hidden;
 }
 
 /*loading bar spinner*/
@@ -82,8 +109,3 @@ textarea {
   top: 50%;
   left: 50%;
 }
-
-
-/*textarea {position: absolute; height: 100px; width: 300px; top: 50%; left: 50%;}
-#test1 {background: rgba(0,0,0,0); color: red;}
-#test2 {background: rgba(0,0,0,0); color: #000;}*/

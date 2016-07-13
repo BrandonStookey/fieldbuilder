@@ -51,43 +51,40 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','a
 		console.log('order: ', order);
 	}
 
-	$scope.userContent = '';
-  $scope.$watch('choice', function(newValue){ 
+//=========================Textarea and Div
+  $scope.$watch('choice', function(newValue){
+    if(newValue === undefined){
+      $("#textareaDiv").html('<div></div>');
+    }
+    var tempString;
+    var newString = '';
+    var newValue = newValue.split('\n');
 
-  	 var resultArray = newValue.split('\n'); 
-  	 console.log('newValue length: ', newValue.length);
-     console.log('newValue: ', newValue.split('\n'));
+    for(var i = 0; i < newValue.length; i++){
+      if(newValue[i].length === 0){
+        $scope.color = "black";
+      }
 
-     if(newValue.length > 12){
-   //   	for(var i = 0; i < resultArray.length; i++){
-   //   		if(resultArray[i].length > 4){
-   //        // $scope.choice.splice()
-  	//      	console.log('<span ng-bind-html="userContent" ng-style="{color: red}">' + resultArray[i].split('').splice(4) + '</span>');
-   //        $scope.choice +=  '<span ng-bind-html="userContent" ng-style="{color: red}">' + newValue[i] + '</span>';
-   //      }
-			// }
+      if(newValue[i].length > 4){
 
-     		// $scope.color = 'red';
-       	console.log('Empty');
+        var resultValue = newValue[i].split('');
+        tempString = resultValue.splice(2);
+        resultValue = resultValue.join('');
+        tempString = tempString.join('');
 
-     } else if (newValue.length < 10){
-     		 $scope.color = 'black';
-     } else {
-       console.log('Has content');
-     }
+        tempString = '<span style ="color: red">' + tempString + '</span>';
+        newString = newString + ' '+ resultValue + tempString + '<br>';
+      } else {
+
+        console.log('else: ', newString);
+        console.log('else: ', newValue[i]);
+        newString = newString + ' ' + newValue[i] + '<br>';
+        console.log('else after concat: ', newString);
+      }
+    }
+
+    $("#textareaDiv").html('<div>' + newString + '</div>');
   });
-
- //  $('#test2').on({
- //  	// http://stackoverflow.com/questions/23392935/html-textarea-color-characters-after-maxlength
- //    focus: function() {
-        
- //        if (this.value.length >= 10) $('#test1').focus();
- //    },
- //    keyup: function() {
- //        if (this.value.length >= 10) $('#test1').focus();
- //        $('#test1').val(this.value)
- //    }
-	// })
 }])
 //this directive limits the maxline in the users' choices box
 .directive('maxlines', function() {
@@ -130,37 +127,4 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','a
       scope.$on('$destroy', removeKeypress);
     }
   };
-})
-.directive('contenteditable', ['$sce', function($sce) {
-	// https://docs.angularjs.org/api/ng/type/ngModel.NgModelController#custom-control-example
-  return {
-    restrict: 'A', // only activate on element attribute
-    require: '?ngModel', // get a hold of NgModelController
-    link: function(scope, element, attrs, ngModel) {
-      if (!ngModel) return; // do nothing if no ng-model
-
-      // Specify how UI should be updated
-      ngModel.$render = function() {
-        element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
-      };
-
-      // Listen for change events to enable binding
-      element.on('blur keyup change', function() {
-        scope.$evalAsync(read);
-      });
-      read(); // initialize
-
-      // Write data to the model
-      function read() {
-        var html = element.html();
-        // When we clear the content editable the browser leaves a <br> behind
-        // If strip-br attribute is provided then we strip this out
-        if ( attrs.stripBr && html == '<br>' ) {
-          html = '';
-        }
-        ngModel.$setViewValue(html);
-      }
-    }
-  };
-
-}]);
+});
