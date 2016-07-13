@@ -1,7 +1,6 @@
 angular.module('project.services', [])
 
 .factory('projectFactory', ['$http', '$location', function($http, $location){
-  var boolean = false;
 
 	var getFieldService = function(){	
 		console.log('inside of app.module.js!');
@@ -16,15 +15,14 @@ angular.module('project.services', [])
 	}
 
 	var createForm = function(label, default1, choices, order){
-   return $http({
+    console.log('data: ', {label: label, default1: default1, choices: choices, order: order})
+    
+    return $http({
       method: 'POST',
       url: '/post',
       data: {label: label, default1: default1, choices: choices, order: order}
     })
     .then(function(resp){
-      console.log('resp: ', resp); 
-      boolean = true;   
-      console.log('boolean Inside of routes: ', boolean);
       $location.path('/secondView');
       return resp; 
     }, function(error){
@@ -35,6 +33,5 @@ angular.module('project.services', [])
 	return{
 		getFieldService: getFieldService,
 		createForm: createForm,
-    boolean: boolean
 	}
 }]);

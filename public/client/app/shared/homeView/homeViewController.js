@@ -7,20 +7,27 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 	$scope.label;
 	$scope.default;
 	$scope.choice = '';
+  $scope.bool = true;
 //===================Makes an API request to auto-fill form
 	projectFactory.getFieldService().then(function(result){
+    //logs json data to the console from API request
+    console.log('result.data: ', result.data);
 		$scope.label = result.data.label;
 		$scope.default = result.data.default;
 
 		for(var i = 0; i < result.data.choices.length; i++){
 			$scope.choice += result.data.choices[i] + '\n';
 		}
+    $scope.choice = $scope.choice.split('\n');
+    $scope.choice.splice(4);
+    $scope.choice = $scope.choice.join('\n')
 	});
 //====================Allows user to clear input field by clicking on 'cancel'
   $scope.clearFields = function(){
     $scope.label = '';
     $scope.default = '';
     $scope.choice = '';
+    $scope.order = '';
   }
 //====================Collects form info, then invokes $http request in app.module.js
 	$scope.formInfo = function(label, default1, choices, order){
@@ -33,7 +40,6 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 		projectFactory.createForm(label, default1, choices, order).then(function(result){
       console.log('createForm: ', result);
     });
-
 		console.log('label: ', label);
 		console.log('default: ', default1);
 		console.log('choices sorted: ', choices);
@@ -45,6 +51,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     var tempString;
     var newString = '';
     newValue = newValue.split('\n');
+
     //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
       $("#textareaDiv").html('<div></div>');
@@ -56,6 +63,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     }
 
     for(var i = 0; i < newValue.length; i++){
+      $scope.bool = true;
       console.log('inside for loop: ', newValue);
       //If the string is greater than 4, it changes the characters colors to red
       //That exceeds the threshold and then concats it back into newString
@@ -79,6 +87,19 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
         newString = newString + ' ' + newValue[i] + '<br>';
       }
     }
+    //Checks to see if any line is greater than restricted amount
+    newValue.filter(function(element){
+      console.log('element: ', element);
+      console.log('bool filter: ', $scope.bool);
+      if($scope.bool === false){
+        $scope.bool = false;
+        $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
+      } else {
+        $scope.bool = element.length <= 4;
+        $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
+      }
+    });
+
     //Once the loop is finished executing, the newString is wrapped in a div and then rendered to the DOM
     $("#textareaDiv").html('<div>' + newString + '</div>');
   });

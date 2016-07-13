@@ -15,9 +15,12 @@
             <br>
               <div>
                 <div id = "textareaDiv"> </div>
-                <textarea type="text" rows="10" cols="30" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" required>
+                <textarea name = "myTextarea" type="text" rows="10" cols="30" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" ng-valid = "bool" required>
                 </textarea>
                 <label class ="choices"> Choices: </label>
+
+                      <div class = "choices" ng-hide = 'bool' style = "color: red">Choices cannot be longer than 40 characters</div>
+
               </div>
             <br>
             	<div>
