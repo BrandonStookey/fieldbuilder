@@ -51,6 +51,22 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     var tempString;
     var newString = '';
     newValue = newValue.split('\n');
+    
+    //====
+    $('.edit').after('<pre></pre>');
+    
+    var $code = $('pre');
+    var position = $('.edit').position();
+    
+    $code.css('left', position.left + 'px');
+    $code.css('top', position.top + 'px');
+    $code.css('width', $('.edit').innerWidth() + 'px');
+    $code.css('height', $('.edit').innerHeight() + 'px');
+    
+    $('.edit').on('input', function() {
+         $('pre').html($(this).val());   
+    });
+    //====
 
     //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
@@ -93,9 +109,11 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
       console.log('bool filter: ', $scope.bool);
       if($scope.bool === false){
         $scope.bool = false;
+        //This invalidates the form, so the user can not submit the textarea
         $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
       } else {
         $scope.bool = element.length <= 4;
+        //this validates the form, so the user can submit the textarea
         $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
       }
     });
