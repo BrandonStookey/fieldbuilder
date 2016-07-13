@@ -76,6 +76,7 @@ label{
 /*Textarea and div*/
 
 textarea{
+	padding: 5px;
 	outline: none;
 	border: none;
 	resize: none;
@@ -88,6 +89,7 @@ textarea{
 }
 
 #textareaDiv{
+	padding: 5px;
 	border: 1px solid;
 	border-radius: 10px;
 	background: white;
