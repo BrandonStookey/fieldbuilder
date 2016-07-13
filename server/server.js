@@ -2,7 +2,6 @@
 
 var express = require('express');
 var morgan = require('morgan');
-var db = require('./../db/db.js');
 var bodyParser = require('body-parser');
 
 var app = module.exports = express();

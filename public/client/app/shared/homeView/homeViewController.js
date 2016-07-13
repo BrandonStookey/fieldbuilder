@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','angular-loading-bar'])
+angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loading-bar'])
 
-.controller('homeViewController', ['$scope', 'projectFactory', function($scope, projectFactory){
-	console.log('I am homeViewController!!!');
-	
+.controller('homeViewController', ['$scope', 'projectFactory', function($scope, projectFactory){	
 	$scope.maxlength = 5;
 	$scope.label;
 	$scope.default;
@@ -26,12 +24,12 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','a
   }
 //====================Collects form info, then invokes $http request in app.module.js
 	$scope.formInfo = function(label, default1, choices, order){
-    //========Sorts choices in alphabetical order
+    //Sorts choices in alphabetical order
     console.log('ORDER!!!: ', order);
 		if(order === 'abcSort'){
 			choices = choices.split('\n').sort();
 		}
-    //============invokes $http request in app.module.js
+    //Invokes $http request in app.module.js
 		projectFactory.createForm(label, default1, choices, order).then(function(result){
       console.log('createForm: ', result);
     });
@@ -42,52 +40,51 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'ngSanitize','a
 		console.log('order: ', order);
 	}
 
-//=========================Textarea and Div
+//=========================Textarea and textareaDiv
   $scope.$watch('choice', function(newValue){
     var tempString;
     var newString = '';
     newValue = newValue.split('\n');
-    //If newValue is undefined, it sets the div to an empty div
+    //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
       $("#textareaDiv").html('<div></div>');
     }
 
-    
     if(newValue.length > 5){
       newValue.splice(4);
       console.log('look here: ', newValue);
     }
 
-    
     for(var i = 0; i < newValue.length; i++){
-      //if the string is greater than 4, it changes the characters colors to red
-      //that exceeds the threshold and then concats it back into newString
+      console.log('inside for loop: ', newValue);
+      //If the string is greater than 4, it changes the characters colors to red
+      //That exceeds the threshold and then concats it back into newString
       if(newValue[i].length > 4){
-        //resultValue temporarily holds onto newValue's current index and splits it into an array
-        //resultValue is used, just so newValue is not modified, since it is needed to conduct a proper for loop
-        //it then splices at 2 and stores it into tempString
-        //result value is joined back into a string, minus the portion spliced off
+        //ResultValue temporarily holds onto newValue's current index and splits it into an array
+        //ResultValue is used, just so newValue is not modified, since it is needed to conduct a proper for loop
+        //It then splices at 2 and stores it into tempString
+        //Result value is joined back into a string, minus the portion spliced off
 
         var resultValue = newValue[i].split('');
         tempString = resultValue.splice(2);
         resultValue = resultValue.join('');
         tempString = tempString.join('');
 
-        //temp string is referencing the portion spliced off, and it is joined back together
-        //it is now modified by being wraped in a span tag and then concated into a newString
+        //Temp string is referencing the portion spliced off, and it is joined back together
+        //It is now modified by being wraped in a span tag and then concated into a newString
         tempString = '<span style ="color: red"><b>' + tempString + '</b></span>';
         newString = newString + ' '+ resultValue + tempString + '<br>';
       } else {
-        //if the current row is not longer than 4, it concats into the newString without being modified
+        //If the current row is not longer than 4, it concats into the newString without being modified
         newString = newString + ' ' + newValue[i] + '<br>';
       }
     }
-    //once the loop is finished executing, the newString is wrapped in a div and then rendered to the DOM
+    //Once the loop is finished executing, the newString is wrapped in a div and then rendered to the DOM
     $("#textareaDiv").html('<div>' + newString + '</div>');
   });
 }])
-//this directive limits the maxline in the users' choices box
-  //if the copies and pasts more than 5 lines, it invalidates the form
+//This directive limits the maxline in the users' choices box
+//If the copies and pasts more than 5 lines, it invalidates the form
 .directive('maxlines', function() {
 	// http://stackoverflow.com/questions/26497492/limit-number-of-lines-or-rows-in-textarea
   return {
