@@ -12,13 +12,10 @@ h1{
 	padding-left: 25px;
 }
 
-select{
-	margin-top: 230px;
-}
-
 .order{
-	/*position: absolute;*/
-	margin-top: 230px;
+	margin-top: 25px;
+	display: inline-block;
+	vertical-align: middle
 }
 
 .multiSelect{
@@ -30,6 +27,12 @@ select{
 	vertical-align: top;
 }
 
+.errorMessage{
+	vertical-align: top;
+	font-size: 11px;
+	color: red;
+}
+
 .cancel{
 	outline: none;
 	background-color: #71D4F4;
@@ -38,7 +41,8 @@ select{
 }
 
 #searchSubmit{
-	margin-left: 100px;
+	margin-top: 10px;
+	height: 25px;
 }
 
 .checkBox{
@@ -54,8 +58,9 @@ select{
 }
 
 label{
-	width: 100px;
+	width: 110px;
 }
+
 .header{
 	background-color: #71D4F4;
 	padding-top: 20px;
@@ -87,14 +92,19 @@ label{
 	width: 250px;
 	height: 250px;
 }*/
-
+.wrapper{
+	width: 250px;
+	height: 250px;
+	margin-bottom: 20px;
+}
 #textareaDiv{
 	padding: 5px;
 	border: 1px solid;
 	border-radius: 10px;
 	background: white;
 	position: absolute;
-	margin-left: 16%;
+	/*margin-left: 16%;*/
+	/*float: right;*/
 	width: 250px;
 	height: 250px;
 	overflow: scroll;
@@ -102,23 +112,23 @@ label{
 }
 
 /*adding cursor back in */
-pre {
+/*pre {
 	position: absolute;
 	z-index: -1;
-	
-	outline: 1px dashed black;
-}
+	width: 250px;
+	height: 250px;
+	outline: 5px dashed red;
+}*/
 
 .edit {
-  /*outline: 1px dotted blue;*/
-  /*opacity: 1;*/
-	/*width: 50%;*/
-
 	padding: 5px;
-	outline: none;
-	border: none;
+	/*outline: none;*/
+	border: 1px solid;
 	position: absolute;
-	margin-left: 16%;
+	/*margin-left: 16%;*/
+	/*float: right;*/
+	margin-bottom: 10px;
+	margin-bottom: 10px;
 	width: 250px;
 	height: 250px;
 	overflow: scroll;
@@ -126,13 +136,12 @@ pre {
     
 	color: black;
   -webkit-text-fill-color: transparent;
-  
 	background: transparent;
 	
 	resize: none;
 }
 
-pre, .edit {
+.edit {
 	overflow: auto;
 	padding: 5px;
 	
@@ -151,4 +160,8 @@ pre, .edit {
 #loading-bar-spinner {
   top: 50%;
   left: 50%;
+}
+
+.successForm{
+	text-align: center;
 }

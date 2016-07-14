@@ -50,28 +50,29 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
   $scope.$watch('choice', function(newValue){
     var tempString;
     var newString = '';
-    newValue = newValue.split('\n');
-    
-    //====
-    $('.edit').after('<pre></pre>');
-    
-    var $code = $('pre');
-    var position = $('.edit').position();
-    
-    $code.css('left', position.left + 'px');
-    $code.css('top', position.top + 'px');
-    $code.css('width', $('.edit').innerWidth() + 'px');
-    $code.css('height', $('.edit').innerHeight() + 'px');
-    
-    $('.edit').on('input', function() {
-         $('pre').html($(this).val());   
-    });
-    //====
-
-    //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
       $("#textareaDiv").html('<div></div>');
     }
+    newValue = newValue.split('\n');
+
+    //====
+    // $('.edit').after('<pre></pre>');
+    
+    // var $code = $('pre');
+    // var position = $('.edit').position();
+    
+    // $code.css('left', position.left + 'px');
+    // $code.css('top', position.top + 'px');
+    // $code.css('width', $('.edit').innerWidth() + 'px');
+    // $code.css('height', $('.edit').innerHeight() + 'px');
+    
+    // $('.edit').on('input', function() {
+    //      $('pre').html($(this).val());   
+    // });
+    //====
+
+    //If newValue is undefined, it sets the textareaDiv div to an empty div
+
 
     if(newValue.length > 5){
       newValue.splice(4);
@@ -100,7 +101,12 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
         newString = newString + ' '+ resultValue + tempString + '<br>';
       } else {
         //If the current row is not longer than 4, it concats into the newString without being modified
-        newString = newString + ' ' + newValue[i] + '<br>';
+        if(newValue[i] === undefined){
+          newValue[i] = ' ';
+          newString = newString + ' ' + newValue[i] + '<br>';
+        } else {
+          newString = newString + ' ' + newValue[i] + '<br>';
+        }
       }
     }
     //Checks to see if any line is greater than restricted amount
