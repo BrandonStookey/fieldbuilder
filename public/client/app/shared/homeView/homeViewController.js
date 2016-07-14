@@ -3,7 +3,6 @@
 angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loading-bar'])
 
 .controller('homeViewController', ['$scope', 'projectFactory', function($scope, projectFactory){	
-	$scope.maxlength = 5;
 	$scope.label;
 	$scope.default;
 	$scope.choice = '';
@@ -18,9 +17,11 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 		for(var i = 0; i < result.data.choices.length; i++){
 			$scope.choice += result.data.choices[i] + '\n';
 		}
-    $scope.choice = $scope.choice.split('\n');
-    $scope.choice.splice(4);
-    $scope.choice = $scope.choice.join('\n')
+
+    if(!$scope.choice.includes($scope.default)){
+      $scope.choice += $scope.default;
+    }
+
 	});
 //====================Allows user to clear input field by clicking on 'cancel'
   $scope.clearFields = function(){
@@ -50,48 +51,27 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
   $scope.$watch('choice', function(newValue){
     var tempString;
     var newString = '';
+
+    //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
       $("#textareaDiv").html('<div></div>');
     }
     newValue = newValue.split('\n');
-
-    //====
-    // $('.edit').after('<pre></pre>');
-    
-    // var $code = $('pre');
-    // var position = $('.edit').position();
-    
-    // $code.css('left', position.left + 'px');
-    // $code.css('top', position.top + 'px');
-    // $code.css('width', $('.edit').innerWidth() + 'px');
-    // $code.css('height', $('.edit').innerHeight() + 'px');
-    
-    // $('.edit').on('input', function() {
-    //      $('pre').html($(this).val());   
-    // });
-    //====
-
-    //If newValue is undefined, it sets the textareaDiv div to an empty div
-
-
-    if(newValue.length > 5){
-      newValue.splice(4);
-      console.log('look here: ', newValue);
-    }
+    $scope.choice = newValue.join('\n');
 
     for(var i = 0; i < newValue.length; i++){
       $scope.bool = true;
       console.log('inside for loop: ', newValue);
       //If the string is greater than 4, it changes the characters colors to red
       //That exceeds the threshold and then concats it back into newString
-      if(newValue[i].length > 4){
+      if(newValue[i].length > 40){
         //ResultValue temporarily holds onto newValue's current index and splits it into an array
         //ResultValue is used, just so newValue is not modified, since it is needed to conduct a proper for loop
         //It then splices at 2 and stores it into tempString
         //Result value is joined back into a string, minus the portion spliced off
 
         var resultValue = newValue[i].split('');
-        tempString = resultValue.splice(2);
+        tempString = resultValue.splice(39);
         resultValue = resultValue.join('');
         tempString = tempString.join('');
 
@@ -118,7 +98,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
         //This invalidates the form, so the user can not submit the textarea
         $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
       } else {
-        $scope.bool = element.length <= 4;
+        $scope.bool = element.length <= 40;
         //this validates the form, so the user can submit the textarea
         $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
       }

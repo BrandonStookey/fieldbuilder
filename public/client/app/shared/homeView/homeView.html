@@ -1,27 +1,25 @@
 <!-- https://docs.angularjs.org/api/ng/directive/ngMaxlength -->
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-8 col-sm-offset-2">
+    <div class = "col-sm-8 col-sm-of">
       <div class = "fieldBuilder">
-        <div class = "row">
-          <div class = "col-sm-offset-2">
             <form name="myForm" form-autofill-fix>
 
               <div class="row">
-                	<div class="col-md-12">
+                	<div class="col-sm-12">
                     <label>Label:</label>
                     <input class = "mainInput" type="text" name="input" ng-model="label" required> 
                   </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-12">
-                	<label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
+                <div class="col-sm-12">
+                  <label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  
+                  <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
                 </div>
-              </div>
+
               
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                 	<label>Default:</label> <input class ="mainInput" type="text" name="input" ng-model="default" required>
                 </div>
               </div>
@@ -32,14 +30,17 @@
 
 <div class = "wrapper">
   <div class = "row">
-                  <div class="col-md-5">
+
+                <div class = "textareaWrapper">
+                  <div class="col-sm-5">
                       <label class ="choices"> Choices: </label>
                       <div class = "errorMessage" ng-hide = 'bool'>Choices cannot be longer than 40 characters</div>
                   </div>
+                </div>  
 
-                  <div class = "col-md-3">
+                  <div class = "col-sm-3">
                       <div id = "textareaDiv"> </div>
-                      <textarea class = "edit" name = "myTextarea" type="text" rows="10" cols="30" ng-model = "choice" maxlines = "5" maxlines-prevent-enter="true" ng-valid = "bool" required>
+                      <textarea class = "edit" name = "myTextarea" type="text" rows="10" cols="30" ng-model = "choice" maxlines = "40" maxlines-prevent-enter="true" ng-valid = "bool" required>
                       </textarea>
                   </div>
 
@@ -49,7 +50,7 @@
 </div>
            
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
             	     <label class = 'order'> Order: </label>
             	     <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
             	      <option value="abcSort"> Display choices in alphabetical order </option>
@@ -58,8 +59,8 @@
               </div>
 
               <div class="row">
-                <div class = "col-md-3"></div>
-                <div class="col-md-9">
+                <div class = "col-sm-3"></div>
+                <div class="col-sm-9">
 
                   <button type="button" id = 'searchSubmit'  ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Save Changes</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
                 </div>
