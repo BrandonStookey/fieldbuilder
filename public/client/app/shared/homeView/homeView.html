@@ -1,22 +1,23 @@
 <!-- https://docs.angularjs.org/api/ng/directive/ngMaxlength -->
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-8 col-sm-of">
+    <div class = "col-sm-8">
       <div class = "fieldBuilder">
-            <form name="myForm" form-autofill-fix>
+            <form name="myForm" novalidate form-autofill-fix>
 
               <div class="row">
                 	<div class="col-sm-12">
                     <label>Label:</label>
-                    <input class = "mainInput" type="text" name="input" ng-model="label" required> 
+                    <input class = "mainInput" type="text" name="input" ng-model="label" required novalidate> 
                   </div>
               </div>
 
+              <div class = "row">
                 <div class="col-sm-12">
                   <label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  
                   <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
                 </div>
-
+              </div>
               
               <div class="row">
                 <div class="col-sm-12">

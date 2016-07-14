@@ -58,6 +58,21 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     }
     newValue = newValue.split('\n');
     $scope.choice = newValue.join('\n');
+    
+
+        // $('.edit').after('<pre></pre>');
+
+        // var $code = $('pre');
+        // var position = $('.edit').position();
+
+        // $code.css('left', position.left + 'px');
+        // $code.css('top', position.top + 'px');
+        // $code.css('width', $('.edit').innerWidth() + 'px');
+        // $code.css('height', $('.edit').innerHeight() + 'px');
+
+        // $('.edit').on('input', function() {
+        //      $('pre').html($(this).val());   
+        // });
 
     for(var i = 0; i < newValue.length; i++){
       $scope.bool = true;
@@ -77,7 +92,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 
         //Temp string is referencing the portion spliced off, and it is joined back together
         //It is now modified by being wraped in a span tag and then concated into a newString
-        tempString = '<span style ="color: red"><b>' + tempString + '</b></span>';
+        tempString = '<span style ="color: red">' + tempString + '</span>';
         newString = newString + ' '+ resultValue + tempString + '<br>';
       } else {
         //If the current row is not longer than 4, it concats into the newString without being modified

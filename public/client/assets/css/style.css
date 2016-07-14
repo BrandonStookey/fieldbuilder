@@ -101,6 +101,8 @@ label{
 	margin-bottom: 20px;
 }
 #textareaDiv{
+	font-weight: 15px;
+	font-family: "Times New Roman", Times, serif;
 	padding: 5px;
 	border: 1px solid;
 	border-radius: 10px;
@@ -110,7 +112,7 @@ label{
 	/*float: right;*/
 	width: 380px;
 	height: 250px;
-	overflow-x: scroll
+	overflow-x: scroll;
 	overflow: scroll;
 	overflow: auto;
 	overflow: hidden;
@@ -123,15 +125,13 @@ label{
 	width: 250px;
 	height: 250px;
 	outline: 5px dashed red;
-}*/
-
+}
+*/
 .edit {
 	padding: 5px;
-	/*outline: none;*/
-	border: 1px solid;
+	outline: none;
+	border: none;
 	position: absolute;
-	/*margin-left: 16%;*/
-	/*float: right;*/
 	margin-bottom: 10px;
 	margin-bottom: 10px;
 	width: 380px;
@@ -155,7 +155,8 @@ label{
 	tab-size: 3;
 	-o-tab-size: 3;
 	-moz-tab-size: 3;
-	font-size: 15px;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
 }
 
 /*loading bar spinner*/
