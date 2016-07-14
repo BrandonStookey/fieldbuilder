@@ -51,6 +51,10 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
   $scope.$watch('choice', function(newValue){
     var tempString;
     var newString = '';
+    //Enables div and textarea to scroll together
+    $('.edit').on('scroll', function() {
+      $('#textareaDiv').scrollTop($('.edit').scrollTop());
+    });
 
     //If newValue is undefined, it sets the textareaDiv div to an empty div
     if(newValue === undefined){
@@ -58,21 +62,6 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     }
     newValue = newValue.split('\n');
     $scope.choice = newValue.join('\n');
-    
-
-        // $('.edit').after('<pre></pre>');
-
-        // var $code = $('pre');
-        // var position = $('.edit').position();
-
-        // $code.css('left', position.left + 'px');
-        // $code.css('top', position.top + 'px');
-        // $code.css('width', $('.edit').innerWidth() + 'px');
-        // $code.css('height', $('.edit').innerHeight() + 'px');
-
-        // $('.edit').on('input', function() {
-        //      $('pre').html($(this).val());   
-        // });
 
     for(var i = 0; i < newValue.length; i++){
       $scope.bool = true;

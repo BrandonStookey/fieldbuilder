@@ -12,58 +12,6 @@ h1{
 	padding-left: 25px;
 }
 
-.order{
-	margin-top: 25px;
-	display: inline-block;
-	vertical-align: middle
-}
-
-.multiSelect{
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-.choices{
-	vertical-align: top;
-}
-
-.errorMessage{
-	vertical-align: top;
-	font-size: 11px;
-	color: red;
-}
-
-.cancel{
-	outline: none;
-	background-color: #71D4F4;
-	border: none;
-	color: red;
-}
-
-#searchSubmit{
-	margin-top: 10px;
-	height: 25px;
-}
-
-.checkBox{
-	width: 10px;
-	margin-left: 40px;
-}
-
-.textareaWrapper{
-	position:relative;
-}
-
-.mainInput{
-	margin-top: 10px;
-	margin-bottom:10px;
-	border-radius: 5px;
-}
-
-label{
-	width: 110px;
-}
-
 .header{
 	background-color: #71D4F4;
 	padding-top: 20px;
@@ -81,25 +29,66 @@ label{
 	padding-right: 80px;
 }
 
+label{
+	width: 110px;
+}
+
+.mainInput{
+	margin-top: 10px;
+	margin-bottom:10px;
+	border-radius: 5px;
+}
+
+.checkBox{
+	width: 10px;
+	margin-left: 40px;
+}
+
+.multiSelect{
+	font-weight: bold;
+	margin-right: 95px;
+}
+
+.choices{
+	vertical-align: top;
+}
+
+.errorMessage{
+	vertical-align: top;
+	font-size: 11px;
+	color: red;
+}
+
+.order{
+	margin-top: 25px;
+	display: inline-block;
+	vertical-align: middle
+}
+
+#searchSubmit{
+	margin-top: 10px;
+	height: 25px;
+}
+
+.cancel{
+	outline: none;
+	background-color: #71D4F4;
+	border: none;
+	color: red;
+}
+
 /*Textarea and div*/
 
-/*textarea{
-	padding: 5px;
-	outline: none;
-	border: none;
-	resize: none;
-	position: absolute;
-	background: transparent;
-	color: transparent;
-	margin-left: 16%;
-	width: 250px;
-	height: 250px;
-}*/
+.textareaWrapper{
+	position:relative;
+}
+
 .wrapper{
 	width: 250px;
-	height: 250px;
+	min-height: 250px;
 	margin-bottom: 20px;
 }
+
 #textareaDiv{
 	font-weight: 15px;
 	font-family: "Times New Roman", Times, serif;
@@ -107,26 +96,13 @@ label{
 	border: 1px solid;
 	border-radius: 10px;
 	background: white;
-	position: absolute;
-	/*margin-left: 16%;*/
-	/*float: right;*/
 	width: 380px;
 	height: 250px;
-	overflow-x: scroll;
+	position: absolute;
 	overflow: scroll;
-	overflow: auto;
-	overflow: hidden;
 }
 
 /*adding cursor back in */
-/*pre {
-	position: absolute;
-	z-index: -1;
-	width: 250px;
-	height: 250px;
-	outline: 5px dashed red;
-}
-*/
 .edit {
 	padding: 5px;
 	outline: none;
@@ -135,21 +111,16 @@ label{
 	margin-bottom: 10px;
 	margin-bottom: 10px;
 	width: 380px;
-	height: 250px;
-	overflow-x: scroll;
+	min-height: 250px;
 	overflow: scroll;
-	overflow: auto;
-	overflow: hidden;
     
 	color: black;
   -webkit-text-fill-color: transparent;
 	background: transparent;
 	
 	resize: none;
-}
 
-.edit {
-	overflow: auto;
+	/*overflow: auto;*/
 	padding: 5px;
 	
 	tab-size: 3;
