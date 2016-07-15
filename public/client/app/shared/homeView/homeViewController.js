@@ -21,6 +21,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
         $scope.choice += result.data.choices[i] + '\n';
       }
 		}
+    //checks to see if default is included in choices in api request, if not it is added in
     if(!$scope.choice.includes($scope.default)){
       $scope.choice += '\n' + $scope.default ;
     }
@@ -34,9 +35,16 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
   }
 //====================Collects form info, then invokes $http request in app.module.js
 	$scope.formInfo = function(label, default1, choices, order){
+    choices = choices.split('\n')
+    //checks to see if default is included in choices, if not adds it to the array
+    if(!choices.includes($scope.default)){
+      console.log('inside of whatever')
+      choices[choices.length] = default1;
+    }
+    
     //Sorts choices in alphabetical order
 		if(order === 'abcSort'){
-			choices = choices.split('\n').sort();
+			choices = choices.sort();
 		}
     //Invokes $http request in app.module.js
 		projectFactory.createForm(label, default1, choices, order).then(function(result){
@@ -101,6 +109,8 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     //Here it is important to note that our textarea box's background and text is set to transparent
       //the div is aligned perfectly under it and it renders what the user types from the textarea box into the div, the reason this is done, is so the text 
       //can be modified if the user exceeds more than 40 characters on a single line. Texts inside of textarea boxes cannot be modified, the way it is being modified in the div
+
+
     $("#textareaDiv").html('<div>' + newString + '</div>');
   });
 }])
