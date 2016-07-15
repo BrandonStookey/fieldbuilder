@@ -4,63 +4,58 @@
     <div class = "col-sm-8 col-sm-offset-2">
       <div class = "fieldBuilder">
         <form name="myForm" novalidate form-autofill-fix>
-              <div class="row">
-                  <div class="col-sm-12">
-                    <label>Label:</label>
-                    <input class = "mainInput" type="text" name="input" ng-model="label" required novalidate> 
-                  </div>
-              </div>
-
-              <div class = "row">
-                <div class="col-sm-12">
-                  <label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  
-                  <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-sm-12">
-                  <label>Default:</label> <input class ="mainInput" type="text" name="input" ng-model="default" required>
-                </div>
-              </div>
-
-              <div>
-              <div class = "wrapper">
-                <div class = "row">
-                  <div class = "textareaWrapper">
-                    <div class="col-sm-5">
-                      <label class ="choices"> Choices: </label>
-                      <div class = "errorMessage" ng-hide = 'bool'>Choices cannot be longer than 40 characters</div>
-                    </div>
-                  </div> 
-                   
-                  <div class = "col-sm-3">
-                    <div id = "textareaDiv"> </div>
-                    <textarea class = "edit" name = "myTextarea" type="text" rows="10" cols="30" ng-model = "choice" maxlines = "50" maxlines-prevent-enter="true" ng-valid = "bool" required>
-                    </textarea>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-12">
-                   <label class = 'order'> Order: </label>
-                   <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
-                    <option value="abcSort"> Display choices in alphabetical order </option>
-                   </select>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class = "col-sm-3"></div>
-                <div class="col-sm-9">
-                  <button type="button" id = 'searchSubmit'  ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Save Changes</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
-                </div>
-              </div>
-
-            </form>
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Label:</label>
+              <input class = "mainInput" type="text" name="input" ng-model="label" required novalidate> 
+            </div>
           </div>
-        </div>
+
+          <div class = "row">
+            <div class="col-sm-12">
+              <label>Type:</label> <span class = "multiSelect"> Multi Select Text </span>  
+              <input type="checkbox" class ="checkBox" checked="checked"> A value is required 
+            </div>
+          </div>
+              
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Default:</label> <input class ="mainInput" type="text" name="input" ng-model="default" required>
+            </div>
+          </div>
+
+          <div class = "wrapper">
+            <div class = "row">
+                <div class="col-sm-2">
+                  <label class ="choices"> Choices: </label>
+                  <div class = "errorMessage" ng-hide = 'bool'>Choices cannot be longer than 40 characters</div>
+                </div>
+
+              <div class = "col-sm-7">
+                <div id = "textareaDiv"></div>
+                <textarea class = "edit" name = "myTextarea" type="text" ng-model = "choice" maxlines = "50" maxlines-prevent-enter="true" ng-valid = "bool" required>
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+               <label> Order: </label>
+               <select name="repeatSelect" id="repeatSelect" ng-model="order" required>
+                <option value="abcSort"> Display choices in alphabetical order </option>
+               </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-sm-3"></div>
+            <div class="col-sm-9">
+              <button type="button" id = 'searchSubmit'  ng-click ="formInfo(label, default, choice, order)" class ="searchSubmit" ng-disabled="myForm.$invalid">Save Changes</button> or <button class = "cancel" ng-click= "clearFields()">Cancel</button>
+            </div>
+          </div>
+
+        </form>
       </div>
     </div>
   </div>
