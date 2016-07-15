@@ -111,7 +111,7 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
       //can be modified if the user exceeds more than 40 characters on a single line. Texts inside of textarea boxes cannot be modified, the way it is being modified in the div
 
 
-    $("#textareaDiv").html('<div>' + newString + '</div>');
+    $("#textareaDiv").html('<div>' + newString + '</div><br><div></div>');
   });
 }])
 //This directive limits the maxline in the users' choices box

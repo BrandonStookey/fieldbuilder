@@ -99,8 +99,8 @@ label{
 	width: 380px;
 	height: 250px;
 	position: absolute;
-	overflow: scroll;
-	overflow-x: hidden;
+	overflow: auto;
+	/*overflow-x: hidden;*/
 }
 
 /*adding cursor back in */
@@ -113,8 +113,9 @@ label{
 	margin-bottom: 10px;
 	width: 380px;
 	min-height: 249px;
-	overflow: scroll;
-	overflow-x: hidden;
+	/*overflow: hidden;*/
+	overflow: auto;
+	/*overflow-x: hidden;*/
 	color: black;
   -webkit-text-fill-color: transparent;
 	background: transparent;
