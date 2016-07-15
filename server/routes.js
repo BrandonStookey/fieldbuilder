@@ -28,11 +28,9 @@ var FieldService =  {
 }
 
 app.get('/fieldService/', function(req, res) {
-    // if(error){
-    // 	console.log(error);
-    // }
     res.status(200).send(FieldService.saveField()) ;
 });
+
 
 app.post('/post', function(req, res){
 	request.post({

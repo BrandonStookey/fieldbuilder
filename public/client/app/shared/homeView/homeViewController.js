@@ -10,18 +10,20 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 //===================Makes an API request to auto-fill form
 	projectFactory.getFieldService().then(function(result){
     //logs json data to the console from API request
-    console.log('result.data: ', result.data);
+    console.log('GET request data: ', result.data);
 		$scope.label = result.data.label;
 		$scope.default = result.data.default;
 
 		for(var i = 0; i < result.data.choices.length; i++){
-			$scope.choice += result.data.choices[i] + '\n';
+      if(i === result.data.choices.length - 1){
+  			$scope.choice += result.data.choices[i];
+      } else {
+        $scope.choice += result.data.choices[i] + '\n';
+      }
 		}
-
     if(!$scope.choice.includes($scope.default)){
-      $scope.choice += $scope.default;
+      $scope.choice += '\n' + $scope.default ;
     }
-
 	});
 //====================Allows user to clear input field by clicking on 'cancel'
   $scope.clearFields = function(){
@@ -33,7 +35,6 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 //====================Collects form info, then invokes $http request in app.module.js
 	$scope.formInfo = function(label, default1, choices, order){
     //Sorts choices in alphabetical order
-    console.log('ORDER!!!: ', order);
 		if(order === 'abcSort'){
 			choices = choices.split('\n').sort();
 		}
@@ -41,16 +42,13 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
 		projectFactory.createForm(label, default1, choices, order).then(function(result){
       console.log('createForm: ', result);
     });
-		console.log('label: ', label);
-		console.log('default: ', default1);
-		console.log('choices sorted: ', choices);
-		console.log('order: ', order);
 	}
 
 //=========================Textarea and textareaDiv
   $scope.$watch('choice', function(newValue){
     var tempString;
     var newString = '';
+    $scope.bool = true;
     //Enables div and textarea to scroll together
     $('.edit').on('scroll', function() {
       $('#textareaDiv').scrollTop($('.edit').scrollTop());
@@ -60,18 +58,16 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     if(newValue === undefined){
       $("#textareaDiv").html('<div></div>');
     }
+    //if it is not undefined we will split it on the new lines, then iterate over each index to check to see if the characters length exceeds 40
     newValue = newValue.split('\n');
-    $scope.choice = newValue.join('\n');
 
     for(var i = 0; i < newValue.length; i++){
-      $scope.bool = true;
-      console.log('inside for loop: ', newValue);
       //If the string is greater than 4, it changes the characters colors to red
       //That exceeds the threshold and then concats it back into newString
       if(newValue[i].length > 40){
         //ResultValue temporarily holds onto newValue's current index and splits it into an array
         //ResultValue is used, just so newValue is not modified, since it is needed to conduct a proper for loop
-        //It then splices at 2 and stores it into tempString
+        //It then splices at 39 and stores it into tempString
         //Result value is joined back into a string, minus the portion spliced off
 
         var resultValue = newValue[i].split('');
@@ -84,22 +80,15 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
         tempString = '<span style ="color: red">' + tempString + '</span>';
         newString = newString + ' '+ resultValue + tempString + '<br>';
       } else {
-        //If the current row is not longer than 4, it concats into the newString without being modified
-        if(newValue[i] === undefined){
-          newValue[i] = ' ';
+        //If the current row is not longer than or equal to 40, it concats into the newString without being modified
           newString = newString + ' ' + newValue[i] + '<br>';
-        } else {
-          newString = newString + ' ' + newValue[i] + '<br>';
-        }
       }
     }
-    //Checks to see if any line is greater than restricted amount
+    //Checks to see if any line is greater than or equal to 40 
     newValue.filter(function(element){
-      console.log('element: ', element);
-      console.log('bool filter: ', $scope.bool);
       if($scope.bool === false){
         $scope.bool = false;
-        //This invalidates the form, so the user can not submit the textarea
+        //If it is greater than 40, this invalidates the form, so the user can not submit the textarea
         $scope.myForm.myTextarea.$setValidity("default1", $scope.bool);
       } else {
         $scope.bool = element.length <= 40;
@@ -109,11 +98,14 @@ angular.module('project.homeView', ['ui.bootstrap', 'ngAnimate', 'angular-loadin
     });
 
     //Once the loop is finished executing, the newString is wrapped in a div and then rendered to the DOM
+    //Here it is important to note that our textarea box's background and text is set to transparent
+      //the div is aligned perfectly under it and it renders what the user types from the textarea box into the div, the reason this is done, is so the text 
+      //can be modified if the user exceeds more than 40 characters on a single line. Texts inside of textarea boxes cannot be modified, the way it is being modified in the div
     $("#textareaDiv").html('<div>' + newString + '</div>');
   });
 }])
 //This directive limits the maxline in the users' choices box
-//If the copies and pasts more than 5 lines, it invalidates the form
+//If the copies and pasts more than 40 lines, it invalidates the form
 .directive('maxlines', function() {
 	// http://stackoverflow.com/questions/26497492/limit-number-of-lines-or-rows-in-textarea
   return {

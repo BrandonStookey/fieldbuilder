@@ -3,7 +3,6 @@ angular.module('project.services', [])
 .factory('projectFactory', ['$http', '$location', function($http, $location){
 
 	var getFieldService = function(){	
-		console.log('inside of app.module.js!');
 		return $http({
 			method: 'GET',
 			url: '/fieldService/',
@@ -15,7 +14,7 @@ angular.module('project.services', [])
 	}
 
 	var createForm = function(label, default1, choices, order){
-    console.log('data: ', {label: label, default1: default1, choices: choices, order: order})
+    console.log('POST request data: ', {label: label, default1: default1, choices: choices, order: order})
     
     return $http({
       method: 'POST',
