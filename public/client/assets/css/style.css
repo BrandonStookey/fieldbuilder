@@ -103,7 +103,7 @@ label{
 	min-height: 250px;
 	overflow: auto;
 	color: black;
-  -webkit-text-fill-color: green;
+  -webkit-text-fill-color: transparent;
 	background: transparent;
 	resize: none;
 	
